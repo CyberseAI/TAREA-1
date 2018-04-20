@@ -9,7 +9,8 @@ var Ingredient = require("../../../database/collections/ingredient");
 
 router.post("/recipes", (req, res) =>
 {
-  if (req.body.name == "" && req.body.descripcion == "") {
+  if (req.body.name == "" && req.body.descripcion == "")
+  {
     res.status(400).json(
       {
         "msn" : "El formato es incorrecto"
@@ -26,23 +27,28 @@ router.post("/recipes", (req, res) =>
 
   var recipeData = new Recipe(recipe);
 
-  recipeData.save().then( () => {
-    res.status(200).json({
+  recipeData.save().then( () =>
+  {
+    res.status(200).json(
+    {
       "msn" : "La receta se ha registrado correctamente "
     });
   });
 });
 
-router.post("/ingredients", (req, res) => {
+router.post("/ingredients", (req, res) =>
+{
 
   if (req.body.name == "" && req.body.kcal == "" && req.body.peso == "")
   {
-    res.status(400).json({
+    res.status(400).json(
+    {
       "msn" : "El formato es incorrecto"
     });
     return;
   }
-  var ingredient = {
+  var ingredient =
+  {
     name : req.body.name,
     kcal : req.body.kcal,
     peso : req.body.peso
@@ -52,7 +58,8 @@ router.post("/ingredients", (req, res) => {
 
   ingredientData.save().then( () =>
   {
-    res.status(200).json({
+    res.status(200).json(
+    {
       "msn" : "Los ingredientes han sido registrados exitosamente "
     });
   });
